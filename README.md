@@ -6,8 +6,10 @@
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
+![Version](https://img.shields.io/badge/version-1.0.0-orange)
 
 ---
+
 ## images
 
 <img src="public/one.png">
@@ -24,6 +26,7 @@
 - 📋 **Conventional Commits** format — `type(scope): description`
 - 🛡️ **Silent fallback** — rate limit, timeout, no key? local engine kicks in instantly
 - 🗂️ **Modular structure** — clean split across 5 files
+- 📦 **One-command install** — single `curl` command sets everything up
 
 ---
 
@@ -33,21 +36,21 @@
 - Git
 - `prompt_toolkit`
 
-```bash
-pip install prompt_toolkit --break-system-packages
-```
-
 ---
 
 ## 📁 Project structure
 
 ```
 suggit/
-├── commit.py          ← entry point  (install this to PATH)
-├── git_utils.py       ← git helpers  (stage, diff, commit, push)
-├── ai_suggest.py      ← Gemini AI    (free API, optional)
-├── local_suggest.py   ← local engine (offline, always works)
-├── ui.py              ← spinner + interactive prompt
+├── commit.py           ← entry point  (install this to PATH)
+├── git_utils.py        ← git helpers  (stage, diff, commit, push)
+├── ai_suggest.py       ← Gemini AI    (free API, optional)
+├── local_suggest.py    ← local engine (offline, always works)
+├── ui.py               ← spinner + interactive prompt
+├── install.sh          ← one-command installer
+├── setup.py            ← pip installable
+├── requirements.txt    ← dependencies
+├── CHANGELOG.md        ← version history
 └── README.md
 ```
 
@@ -55,13 +58,23 @@ suggit/
 
 ## 🐧 Linux — Installation
 
+### Option A — One command (recommended)
+
+```bash
+curl -sSL https://raw.githubusercontent.com/charitraa/suggit/main/install.sh | bash
+```
+
+That's it. Downloads all files, installs dependencies, adds aliases automatically.
+
+### Option B — Manual
+
 ```bash
 # 1. Clone the repo
 git clone https://github.com/charitraa/suggit.git
 cd suggit
 
-# 2. Install dependency
-pip install prompt_toolkit --break-system-packages
+# 2. Install dependencies
+pip install -r requirements.txt --break-system-packages
 
 # 3. Copy all files to /usr/local/bin
 sudo cp commit.py git_utils.py ai_suggest.py local_suggest.py ui.py /usr/local/bin/
@@ -72,6 +85,12 @@ sudo chmod +x /usr/local/bin/commit
 # 4. (Optional) Set free Gemini AI key
 echo 'export GEMINI_API_KEY="AIza..."' >> ~/.zshrc
 source ~/.zshrc
+```
+
+### Option C — pip install
+
+```bash
+pip install git+https://github.com/charitraa/suggit.git
 ```
 
 ---
@@ -85,17 +104,16 @@ source ~/.zshrc
 git clone https://github.com/charitraa/suggit.git
 cd suggit
 
-# 2. Install dependency
-pip install prompt_toolkit
+# 2. Install dependencies
+pip install -r requirements.txt
 
 # 3. Create C:\tools\ and copy all files there
 mkdir C:\tools
 copy *.py C:\tools\
 
-# 4. Create C:\tools\commit.bat
-# Content:
-#   @echo off
-#   python "C:\tools\commit.py" %*
+# 4. Create C:\tools\commit.bat with this content:
+#    @echo off
+#    python "C:\tools\commit.py" %*
 
 # 5. Add C:\tools to PATH
 #    Start → "Edit system environment variables"
@@ -175,6 +193,8 @@ If AI is unavailable (rate limit / no key / offline):
 
 ## ⚡ Recommended aliases
 
+The installer adds these automatically. To add manually:
+
 **Linux — add to `~/.zshrc` or `~/.bashrc`**
 ```bash
 alias ca="commit --add"
@@ -226,6 +246,12 @@ Scope is auto-detected from 55+ patterns covering Django, React, Flutter, Node.j
 | AI always falls back to local | Run `echo $GEMINI_API_KEY` — if empty, run `source ~/.zshrc` |
 | `commit` conflicts with another command | Rename: `sudo mv /usr/local/bin/commit /usr/local/bin/aicommit` |
 | Gemini key expired | Get a new key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+
+---
+
+## 📋 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ---
 
