@@ -27,7 +27,7 @@ if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
 fi
 
 # ── Check dependencies ────────────────────────────
-echo "  📦 Checking dependencies..."
+echo "Checking dependencies..."
 
 if ! command -v python3 &>/dev/null; then
     echo -e "${RED}❌  Python 3 not found. Install it: sudo apt install python3${NC}"
@@ -49,7 +49,7 @@ echo -e "  ${GREEN}✓  Git $(git --version | cut -d' ' -f3)${NC}"
 
 # ── Install prompt_toolkit ────────────────────────
 echo ""
-echo "  🐍 Installing Python dependencies..."
+echo "Installing Python dependencies..."
 pip install prompt_toolkit --break-system-packages -q 2>/dev/null || \
 pip install prompt_toolkit -q 2>/dev/null || true
 echo -e "  ${GREEN}✓  prompt_toolkit installed${NC}"
@@ -61,7 +61,7 @@ echo -e "  ${GREEN}✓  google-generativeai installed${NC}"
 
 # ── Download files ────────────────────────────────
 echo ""
-echo "  📥 Downloading Suggit files..."
+echo "Downloading Suggit files..."
 
 TMP_DIR=$(mktemp -d)
 cd "$TMP_DIR"
@@ -107,7 +107,7 @@ fi
 if [[ -n "$GEMINI_API_KEY" ]]; then
     echo -e "  ${GREEN}✓  GEMINI_API_KEY already set${NC}"
 else
-    echo -e "  ${YELLOW}⚠️   GEMINI_API_KEY not set${NC}"
+    echo -e "  ${YELLOW} GEMINI_API_KEY not set${NC}"
     echo "      Get free key: https://aistudio.google.com/apikey"
     if [[ -n "$SHELL_RC" ]]; then
         echo "      Then run:"
@@ -130,7 +130,7 @@ fi
 # ── Done ──────────────────────────────────────────
 echo ""
 echo "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo -e "  ${GREEN}✅  Suggit installed successfully!${NC}"
+echo -e "  ${GREEN} Suggit installed successfully!${NC}"
 echo ""
 echo "  Usage:"
 echo "    commit              # suggest + commit"
