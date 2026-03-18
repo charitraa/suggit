@@ -8,7 +8,7 @@ import re
 from collections import defaultdict
 
 
-# ── File path → commit type ───────────────────────────────────
+# File path -> commit type
 TYPE_RULES = [
     (r"test[s]?[/\\]|_test\.|\.test\.|\.spec\.|test_|__tests__",   "test"),
     (r"readme|changelog|\.md$|docs?[/\\]|\.rst$|contributing",     "docs"),
@@ -21,21 +21,21 @@ TYPE_RULES = [
     (r"setup\.py|setup\.cfg|pyproject\.toml|manifest",            "chore"),
 ]
 
-# ── File path → scope name ────────────────────────────────────
+# File path -> scope name
 SCOPE_RULES = [
 
-    # ── Auth & Security ───────────────────────────────────────
+    # Auth & Security
     (r"auth|login|logout|signin|signup|register",          "auth"),
     (r"token|jwt|oauth|session|cookie|credential",         "auth"),
     (r"password|passwd|hash|encrypt|decrypt|crypto",       "auth"),
     (r"permission|role|access|policy|guard|middleware",    "permissions"),
     (r"firewall|cors|csrf|xss|sanitize",                   "security"),
 
-    # ── User & Profile ────────────────────────────────────────
+    # User & Profile
     (r"user[s]?[/\\.]|account|profile|member|avatar",     "user"),
     (r"contact|address|phone|email",                       "user"),
 
-    # ── Content / Domain models ───────────────────────────────
+    # Content / Domain models
     (r"notice|announcement|bulletin|news",                 "notices"),
     (r"post[s]?[/\\.]|article|blog|content",               "posts"),
     (r"comment[s]?[/\\.]|review|rating|feedback",         "comments"),
@@ -55,11 +55,11 @@ SCOPE_RULES = [
     (r"coupon|discount|promo|voucher",                     "promotions"),
     (r"shipping|delivery|logistics|tracking",              "shipping"),
 
-    # ── Admin & Dashboard ─────────────────────────────────────
+    # Admin & Dashboard
     (r"admin[s]?[/\\.]|dashboard|panel|backoffice",       "admin"),
     (r"cms|content.manage",                                "cms"),
 
-    # ── API Layer ─────────────────────────────────────────────
+    # API Layer
     (r"view[s]?\.py|viewset|apiview",                      "views"),
     (r"endpoint|route[s]?[/\\.]|url[s]?\.py",             "urls"),
     (r"serializer|schema|marshal|transform",               "serializers"),
@@ -69,7 +69,7 @@ SCOPE_RULES = [
     (r"graphql|resolver|mutation|subscription\.ts",        "graphql"),
     (r"websocket|socket|ws[/\\.]",                         "websocket"),
 
-    # ── Data layer ────────────────────────────────────────────
+    # Data layer
     (r"model[s]?[/\\.]|entity|table|schema\.py",          "models"),
     (r"repo|repository",                                   "repository"),
     (r"service[s]?[/\\.]",                                 "service"),
@@ -80,7 +80,7 @@ SCOPE_RULES = [
     (r"celery|task[s]?[/\\.]|worker|queue|job",           "tasks"),
     (r"signal[s]?[/\\.]|event.*handler|listener",         "signals"),
 
-    # ── Frontend — React / Next ───────────────────────────────
+    #  Frontend —> React
     (r"component[s]?[/\\.]|\.tsx$|\.jsx$",                "components"),
     (r"page[s]?[/\\.]|layout[s]?[/\\.]|screen",           "pages"),
     (r"context|provider|reducer|slice|zustand|recoil",    "state"),
@@ -94,7 +94,7 @@ SCOPE_RULES = [
     (r"chart|graph|plot|visualization",                    "charts"),
     (r"animation|motion|transition",                       "animations"),
 
-    # ── Flutter / Mobile ──────────────────────────────────────
+    # Flutter / Mobile
     (r"widget|screen|view\.dart",                          "widgets"),
     (r"bloc|cubit|provider\.dart|riverpod",               "state"),
     (r"repository\.dart|datasource",                      "repository"),
@@ -104,7 +104,7 @@ SCOPE_RULES = [
     (r"firebase|fcm|crashlytics",                         "firebase"),
     (r"esewa|khalti|payment\.dart",                       "payments"),
 
-    # ── Backend infra ─────────────────────────────────────────
+    # Backend
     (r"config[s]?[/\\.]|setting[s]?[/\\.]|env",           "config"),
     (r"log[s]?[/\\.]|logger|logging",                     "logging"),
     (r"exception|error[s]?[/\\.]|handler",                "errors"),

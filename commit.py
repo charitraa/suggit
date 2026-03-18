@@ -41,12 +41,12 @@ def main():
                         help="git add . then commit")
     args = parser.parse_args()
 
-    # ── Guard: must be inside a git repo ─────────────────────
+    # Guard: must be inside a git repo
     if not is_git_repo():
         print("❌  Not a git repository.")
         sys.exit(1)
 
-    # ── Stage files ───────────────────────────────────────────
+    # Stage files
     if args.add or args.push:
         stage_all()
         print("  ✦ git add . done")
@@ -62,18 +62,18 @@ def main():
                 stage_all()
                 print("  ✦ git add . done\n")
 
-    # ── Analyse staged diff ───────────────────────────────────
+    # Analyse staged diff
     info = get_staged_info()
     if not info or not info.get("files"):
         print("⚠️  No staged changes.")
         sys.exit(1)
 
-    # ── Print diff summary ────────────────────────────────────
+    # Print diff summary
     print()
     for line in info["stat"].strip().split("\n")[:7]:
         print(f"  \033[2m{line}\033[0m")
 
-    # ── Generate suggestion: AI first, local fallback ─────────
+    # Generate suggestion: AI first, local fallback
     has_key    = bool(os.environ.get("GEMINI_API_KEY"))
     suggestion = ""
 
@@ -90,24 +90,24 @@ def main():
 
     print(f"\n  \033[36m💡 {source} suggestion — edit or press Enter to commit\033[0m")
 
-    # ── Interactive prompt ────────────────────────────────────
+    # Interactive prompt
     final = prompt_user(suggestion)
     if not final:
         print("⚠️  Empty message — cancelled.")
         sys.exit(1)
 
-    # ── Dry run ───────────────────────────────────────────────
+    # Dry run
     if args.dry_run:
         print(f'\n  [dry-run] would commit: "{final}"')
         sys.exit(0)
 
-    # ── Commit ────────────────────────────────────────────────
+    # Commit
     print()
     code = run_commit(final)
     if code != 0:
         sys.exit(code)
 
-    # ── Push ─────────────────────────────────────────────────
+    # Push
     if args.push:
         print()
         run_push()
