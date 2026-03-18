@@ -8,6 +8,11 @@
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
 
 ---
+#images
+
+<img src="public/one.png">
+
+---
 
 ## ✨ Features
 
