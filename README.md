@@ -239,6 +239,7 @@ Scope is auto-detected from 55+ patterns covering Django, React, Flutter, Node.j
 
 | Problem | Fix |
 |---|---|
+| `feat(<file_name>):  '` | Sometimes ai suggest like that but you need run the command again for better suggestion |
 | `ModuleNotFoundError: No module named 'git_utils'` | All 5 `.py` files must be in the same folder — copy them all to `/usr/local/bin/` |
 | `command not found: commit` | Make sure `/usr/local/bin` is in PATH |
 | Script prints garbage on run | Run `sudo sed -i 's/\r//' /usr/local/bin/commit` (CRLF fix) |
