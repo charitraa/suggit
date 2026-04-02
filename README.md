@@ -6,7 +6,7 @@
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
-![Version](https://img.shields.io/badge/version-1.0.0-orange)
+![Version](https://img.shields.io/badge/version-1.1.0-orange)
 
 ---
 
@@ -90,7 +90,7 @@ source ~/.zshrc
 ### Option C — pip install
 
 ```bash
-pip install git+https://github.com/charitraa/suggit.git
+pip install suggit
 ```
 
 ---
@@ -239,7 +239,7 @@ Scope is auto-detected from 55+ patterns covering Django, React, Flutter, Node.j
 
 | Problem | Fix |
 |---|---|
-| `feat(<file_name>):  '` | Sometimes ai suggest like that but you need run the command again for better suggestion |
+| `feat(<file_name>):  '` | Sometimes ai suggest like that but you need run the command again and again for better suggestion |
 | `ModuleNotFoundError: No module named 'git_utils'` | All 5 `.py` files must be in the same folder — copy them all to `/usr/local/bin/` |
 | `command not found: commit` | Make sure `/usr/local/bin` is in PATH |
 | Script prints garbage on run | Run `sudo sed -i 's/\r//' /usr/local/bin/commit` (CRLF fix) |
