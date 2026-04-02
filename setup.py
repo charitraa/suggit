@@ -14,13 +14,11 @@ setup(
     url="https://github.com/charitraa/suggit",
     
     py_modules=[
-        "aicommit",
         "git_utils",
         "ai_suggest",
         "local_suggest",
         "ui",
-        "git_commit",
-        "commit"
+        "commit",
     ],
 
     install_requires=[
