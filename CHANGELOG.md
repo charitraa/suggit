@@ -2,7 +2,7 @@
 
 All notable changes to Suggit are documented here.
 
-## [1.0.2] - 2026-04-02
+## [1.0.3] - 2026-04-02
 
 ### Added
 - AI-powered commit message suggestion via Google Gemini 2.5 Flash

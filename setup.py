@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="suggit",
-    version="1.0.2",
+    version="1.0.3",
     description="AI-powered git commit message suggester with local fallback",
     long_description=long_description,
     long_description_content_type="text/markdown",
